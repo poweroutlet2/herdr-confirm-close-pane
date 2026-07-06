@@ -1,0 +1,24 @@
+id = "confirm-close-pane"
+name = "Confirm Close Pane"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Ask for confirmation before closing a pane, like tmux's prefix+x confirm-before. Bind a key to the action `confirm-close-pane.confirm-close-pane`."
+platforms = ["linux", "macos"]
+
+# Triggered by a keybinding (type = "plugin_action"). Has no TTY of its own,
+# so it just opens the confirmation overlay below, threading the focused pane
+# id (the pane we intend to close) through to it.
+[[actions]]
+id = "confirm-close-pane"
+title = "Close pane (with confirmation)"
+description = "Open a y/n prompt; close the focused pane on confirmation."
+contexts = ["pane"]
+command = ["sh", "scripts/open.sh"]
+
+# A real pane with a real TTY. Shown as a modal overlay, asks once, then exits
+# (exiting dismisses the overlay automatically).
+[[panes]]
+id = "confirm"
+title = "Close pane?"
+placement = "overlay"
+command = ["sh", "scripts/confirm.sh"]
