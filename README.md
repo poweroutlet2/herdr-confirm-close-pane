@@ -7,7 +7,7 @@ confirmation before closing a pane, just like tmux's `prefix+x`
 Press your chosen key (defaults to `prefix+x`) and a small overlay asks:
 
 ```
-Close pane 1-2? (y/n):
+Close this pane? (y/n):
 ```
 
 Press `y` to close the pane, or anything else / `Esc` to cancel. The overlay
